@@ -1,0 +1,32 @@
+precondition forall i : int, 0 <= i && i < Size(q) ==> -1.0 <= ^q[i] && ^q[i] <= 1.0
+precondition n > 0
+precondition t >= 0
+GapSparseVector(q: list(float[*]), t: int[0], n: int[0])
+{
+  let mut out : list(float[0]) = [];
+
+  let eta1   : float[1] = Lap(2 / epsilon);
+  let t'     : float[1] = t + eta1;
+  let mut c1 : int[0]   = 0;
+  let mut i  : int[0]   = 0;
+
+  while (c1 < n && i < Size(q))
+      termination Size(q) - i
+      invariant c1 <= n
+      invariant v_epsilon <= epsilon/2.0 + c1 * epsilon/(2*n)
+    {
+      let eta2 : float[q[i] + eta2 >= t' ? (1 - ^q[i] ) : 0] = Lap(4 * n / epsilon);
+      if (q[i] + eta2 >= t')
+        {
+          out = (q[i] + eta2 - t')::out;
+          c1 = c1 + 1;
+        }
+      else
+        {
+          out = (-1.0)::out;
+        }
+      i = i+1;
+    }
+
+  return out;
+}

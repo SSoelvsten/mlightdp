@@ -1,0 +1,6 @@
+precondition: -1.0 <= ^q && ^q <= 1.0
+Helloise(q: float[*])
+{
+  let eta : float[-^q] = Lap(1 / epsilon);
+  return q + eta;
+}
