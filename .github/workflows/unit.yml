@@ -1,0 +1,43 @@
+name: unit tests
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  test_parser:
+    name: parser
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: git checkout
+      uses: actions/checkout@v2
+
+    - name: setup OPAM
+      run: sudo apt install opam && opam init && opam install ocamlbuild menhir ounit
+
+    - name: make compile
+      run: eval $(opam config env) && make compile
+
+    - name: make test-parser
+      run: eval $(opam config env) && make test-parser
+
+  test_semant:
+    name: semantic analysis
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: git checkout
+      uses: actions/checkout@v2
+
+    - name: Setup OPAM
+      run: sudo apt install opam && opam init && opam install ocamlbuild menhir ounit
+
+    - name: make compile
+      run: eval $(opam config env) && make compile
+
+    - name: make test-semant
+      run: eval $(opam config env) && make test-semant
