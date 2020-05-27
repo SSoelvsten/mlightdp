@@ -1,0 +1,29 @@
+name: build
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  build:
+    name: build
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: git checkout
+      uses: actions/checkout@v2
+
+    - name: apt install opam
+      run: sudo apt install opam
+
+    - name: opam init
+      run: opam init && eval $(opam config env)
+
+    - name: opam install ocamlbuild menhir
+      run: opam install ocamlbuild menhir
+
+    - name: make compile
+      run: eval $(opam config env) && make compile
