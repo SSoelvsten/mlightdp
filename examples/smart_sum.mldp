@@ -1,0 +1,41 @@
+precondition: forall i : int , 0 <= i /\ i < Size(q) ==> -1 <= ^q[i] /\ ^q[i] <= 1
+precondition: forall i j : int , (0 <= i /\ i < Size(q) /\ 0 <= j /\ j < Size(q) /\ j != i)
+                ==> ^q[i] != 0 ==> ^q[j] == 0
+precondition: m > 0
+precondition: 0 <= t
+precondition: t < Size(q)
+SmartSum(q: list(float[*]), m: int[0], t: int[0])
+{
+  let mut next : float[0] = 0.0;
+  let mut n    : float[0] = 0.0;
+  let mut i    : int[0]   = 0;
+  let mut sum  : float[*] = 0.0;
+
+  let mut out  : list(float[0]) = [];
+
+  while (i <= t)
+      termination: t + 1 - i
+      invariant: forall j : int, i <= j /\ j < Size(q) /\ v_epsilon + ^sum > 0 ==> ^q[j] == 0.0
+      invariant: ^sum > 0 ==> v_epsilon <= 0.5 * epsilon
+      invariant: ^sum <= 1.0
+      invariant: v_epsilon <= epsilon
+    {
+      if (i+1 % m == 0)
+        {
+          let eta1 : float[-^sum - ^q[i]] = Lap(2.0 / epsilon);
+          n = n + sum + q[i] + eta1;
+          next = n;
+          sum = 0.0;
+          out = next::out;
+        }
+      else
+        {
+          let eta2 : float[-^q[i]] = Lap(2.0 / epsilon);
+          next = next + q[i] + eta2;
+          sum = sum + q[i];
+          out = next::out;
+        }
+      i = i + 1;
+    }
+  return out;
+}

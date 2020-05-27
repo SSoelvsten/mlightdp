@@ -1,0 +1,33 @@
+precondition forall i : int, 0 <= i && i < Size(q) ==> -1 <= ^q[i] && ^q[i] <= 1
+precondition n > 0
+precondition t >= 0
+NumericalSparseVector(q: list(float[*]), t: float[0], n: int[0]) : list(float[0])
+{
+  let mut out : list(float[0]) = [];
+
+  let eta1   : float[1] = Lap(3 / epsilon);
+  let t'     : float[1] = t + eta1;
+  let mut c1 : int[0]   = 0;
+  let mut i  : int[0]   = 0;
+
+  while (c1 < n && i < Size(q))
+      termination Size(q) - i
+      invariant c1 <= n
+      invariant v_epsilon <= epsilon/3 + c1 * (2*epsilon)/(3*n)
+    {
+      let eta2 : float[q[i] + eta2 >= t' ? 2 : 0] = Lap(6 * n / epsilon);
+      if (q[i] + eta2 >= t')
+        {
+          let eta3 : float[-^q[i]] = Lap(3 * n / epsilon);
+          out = (q[i] + eta3) :: out;
+          c1 = c1 + 1;
+        }
+      else
+        {
+          out = 0.0 :: out;
+        }
+      i = i+1;
+    }
+
+  return out;
+}

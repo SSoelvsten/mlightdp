@@ -24,11 +24,75 @@ experience than the current Python prototype of [[Wan+17](#references)].
 **Table of Contents**
 
 - [MLightDP](#mlightdp)
+    - [Dependencies](#dependencies)
+    - [Usage](#usage)
+    - [Examples](#examples)
     - [References](#references)
 
 <!-- markdown-toc end -->
 
+## Dependencies
+To compile the source code and run our tool, one needs to have the _OCaml_
+compiler installed together with the _opam_ packages `menhir` and `ounit`.
 
+To verify the transformed program, one needs [Dafny version
+2.3.0](https://github.com/dafny-lang/dafny/releases/tag/v2.3.0) or higher.
+Versions 2.0 and higher of Dafny may be enough.
+
+## Usage
+By merely writing `make` one should be able to freshly compile the source code
+and run the compiled tool on all the examples present in _examples/_.
+
+**Compilation and usage**
+
+For more fine-grained control than the target above is provided in the following
+targets.
+
+| Target              | Effect                                                                        |
+|---------------------|-------------------------------------------------------------------------------|
+| `compile`           | Compile the MLightDP tool with OCaml                                          |
+| `clean`             | Remove all compilation from OCaml                                             |
+| `run I=<filename>`  | Run the MLightDP tool on _<filename>_ (default: _examples/sparsevector.mldp_) |
+| `examples`          | The same as `run`, but for all examples simultaneously                        |
+| `clean-examples`    | Remove all compiled examples of the MLightDP tool                             |
+
+**Unit Tests**
+
+All tests can be compiled and run with `make test`. More precisely one can choose
+to only run some of the unit tests with the following targets.
+
+| Target             | Tests                                        |
+|--------------------|----------------------------------------------|
+| `make test-parser` | Run unit tests for AST creation from strings |
+| `make test-menhir` | Get Menhir output for shift-reduce conflicts |
+| `make test-semant` | Test semantic analysis step                  |
+
+As one can see, we do yet not cover the _refinement_ or the _differential
+privacy type checking_ steps in the unit testing. Currently these are only
+tested by the examples.
+
+## Examples
+In _examples/_ one can find 6 examples that all compile with our tool. We mark
+in the list below the examples where the transformed output is verified by
+Dafny.
+
+- [X] `helloise.mldp`: The simplest possible program based on the presentation
+      of _randomness alignment_ in [[Wan+19](#references)].
+
+- [X] `sparse_vector.mldp`: The running example in [[ZK17](#references)], that
+      outputs boolean values detailing the relation between the query results
+      and a given threshold.
+
+- [X] `numerical_sparse_vector.mldp`: A variation of the `sparse_vector` example
+      from [[ZK17](#references)].
+
+- [X] `gap_sparse_vector.mldp`: A variation of the `sparse_vector` example
+      from [[Wan+19](#references)].
+
+- [ ] `partial_sum.mldp`: A summation algorithm from [[ZK17](#references)].
+
+- [ ] `smart_sum.mldp`: A more complicated summation algorithm also from
+      [[ZK17](#references)].
 
 ## References
 
@@ -43,6 +107,13 @@ experience than the current Python prototype of [[Wan+17](#references)].
            _“lightdp”_.
            URL: [github.com/yxwangcs/lightdp](https://github.com/yxwangcs/lightdp) .
            2017
+
+- [Wan+19] Yuxin Wang, Zeyu Ding, Guanhong Wang, Daniel Kifer, and Danfeng Zhang.
+           _“Proving Differential Privacy with Shadow Execution”_.
+           In: _Proceedings of the 40th ACM SIGPLAN Conference on Programming Language Design and Implementation_.
+           PLDI 2019. Phoenix, AZ,
+           USA: ACM, 2019,
+           pp. 655 - 669
 
 - [ZK17] Danfeng Zhang and Daniel Kifer.
          _“LightDP: towards automating differential privacy proofs”_.

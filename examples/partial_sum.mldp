@@ -1,0 +1,19 @@
+precondition b > 0.0
+precondition forall i : int , 0 <= i /\ i < Size(q) ==> -b <= ^q[i] /\ ^q[i] <= b
+precondition forall i j : int , (0 <= i /\ i < Size(q) /\ 0 <= j /\ j < Size(q) /\ j != i)
+==> ^q[i] != 0 ==> ^q[j] == 0
+PartialSum(q: list(float[*]), b : float[0])
+{
+  let mut sum   : float[*] = 0.0;
+  let mut i  : int[0]   = 0;
+
+  while (i < Size(q))
+      invariant i <= Size(q)
+    {
+      sum = sum + q[i];
+      i = i+1;
+    }
+
+  let eta : float[-^sum] = Lap(b/epsilon);
+  return sum+eta;
+}
