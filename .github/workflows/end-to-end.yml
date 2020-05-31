@@ -8,8 +8,8 @@ on:
 
 jobs:
 
-  test:
-    name: examples
+  compile-examples:
+    name: compile examples
     runs-on: ubuntu-latest
 
     steps:
@@ -24,3 +24,61 @@ jobs:
 
     - name: make examples
       run: eval $(opam config env) && make examples
+
+    - name: share examples
+      uses: actions/upload-artifact@v1
+      with:
+        name: compiled_examples
+        path: ./examples
+
+  download-dafny:
+    name: download dafny
+    needs: compile-examples
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: download dafny
+      run: wget -O ./dafny.zip "https://github.com/dafny-lang/dafny/releases/download/v2.3.0/dafny-2.3.0.10506-x64-win.zip"
+
+    - name: unzip dafny
+      run: sudo apt install unzip && unzip dafny.zip
+
+    - name: share dafny folder
+      uses: actions/upload-artifact@v1
+      with:
+        name: dafny
+        path: ./dafny
+
+  run-dafny:
+    name: run dafny
+    needs: download-dafny
+    runs-on: windows-latest
+
+    steps:
+      - name: get examples
+        uses: actions/download-artifact@v1
+        with:
+          name: compiled_examples
+
+      - name: get dafny
+        uses: actions/download-artifact@v1
+        with:
+          name: dafny
+
+      - name: verify 'helloise'
+        run: dafny/dafny /compile 0 compiled_examples/helloise.dfy
+
+      - name: verify 'sparse_vector'
+        run: dafny/dafny /compile 0 compiled_examples/sparse_vector.dfy
+
+      - name: verify 'numerical_sparse_vector'
+        run: dafny/dafny /compile 0 compiled_examples/numerical_sparse_vector.dfy
+
+#      - name: verify 'gap_sparse_vector'
+#        run: dafny/dafny /compile 0 compiled_examples/gap_sparse_vector.dfy
+
+#      - name: verify 'partial_sum'
+#        run: dafny/dafny /compile 0 compiled_examples/partial_sum.dfy
+
+#      - name: verify 'smart_sump'
+#        run: dafny/dafny /compile 0 compiled_examples/smart_sum.dfy
