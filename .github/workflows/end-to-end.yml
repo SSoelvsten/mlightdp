@@ -74,8 +74,8 @@ jobs:
       - name: verify 'numerical_sparse_vector'
         run: dafny/dafny /compile 0 compiled_examples/numerical_sparse_vector.dfy
 
-#      - name: verify 'gap_sparse_vector'
-#        run: dafny/dafny /compile 0 compiled_examples/gap_sparse_vector.dfy
+      - name: verify 'gap_sparse_vector'
+        run: dafny/dafny /compile 0 compiled_examples/gap_sparse_vector.dfy
 
 #      - name: verify 'partial_sum'
 #        run: dafny/dafny /compile 0 compiled_examples/partial_sum.dfy
