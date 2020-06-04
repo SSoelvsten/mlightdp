@@ -75,9 +75,9 @@ privacy type checking_ steps in the unit testing. Currently these are only
 tested by the examples.
 
 ## Examples
-In _examples/_ one can find 6 examples that all compile with our tool. We mark
-in the list below the examples where the transformed output is verified by
-Dafny.
+In _examples/_ one can find multiple examples that all compile with our tool.
+We mark in the list below the examples where the transformed output is verified
+by Dafny.
 
 - [X] `helloise.mldp`: The simplest possible program based on the presentation
       of _randomness alignment_ in [[Wan+19](#references)].
@@ -93,6 +93,8 @@ Dafny.
       from [[Wan+19](#references)].
 
 - [ ] `partial_sum.mldp`: A summation algorithm from [[ZK17](#references)].
+
+- [X] `sum.mldp`: A variant of `partial_sum` on simpler to reason about input.
 
 - [ ] `smart_sum.mldp`: A more complicated summation algorithm also from
       [[ZK17](#references)].
