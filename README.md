@@ -94,6 +94,8 @@ Dafny.
 
 - [ ] `partial_sum.mldp`: A summation algorithm from [[ZK17](#references)].
 
+- [X] `sum.mldp`: A variant of `sum` on simpler to reason about input.
+
 - [ ] `smart_sum.mldp`: A more complicated summation algorithm also from
       [[ZK17](#references)].
 

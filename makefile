@@ -34,6 +34,8 @@ examples:
 	@./main.native examples/smart_sum.mldp
 	@echo "Compile Example: Sparse Vector"
 	@./main.native examples/sparse_vector.mldp
+	@echo "Compile Example: Sum"
+	@./main.native examples/sum.mldp
 
 #------------------------------------------------------------------------------#
 # Unit testing

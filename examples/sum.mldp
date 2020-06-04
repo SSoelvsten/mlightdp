@@ -1,0 +1,22 @@
+precondition: b > 0.0
+precondition: forall i : int , 0 <= i /\ i < Size(q) ==> -b <= ^q[i] /\ ^q[i] <= b
+Sum(q: list(float[*]), b : float[0])
+{
+  if (Size(q) == 0) {
+    return 0.0;
+  }
+
+  let mut sum : float[*] = 0.0;
+  let mut i   : int[0]   = 0;
+
+  while (i < Size(q))
+        invariant i <= Size(q)
+        invariant i * -b <= ^sum /\ ^sum <= i * b
+    {
+      sum = sum + q[i];
+      i = i+1;
+    }
+
+  let eta : float[-^sum] = Lap(b*Size(q)/epsilon);
+  return sum+eta;
+}
