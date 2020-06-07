@@ -101,29 +101,32 @@ by Dafny.
 
 ## References
 
-- [Lei10] Rustan Leino.
-     _“Dafny: An Automatic Program Verifier for Functional Correctness”._
-     In: _16th International Conference, LPAR-16, Dakar, Senegal_.
-     Springer Berlin Heidelberg,
-     Apr. 2010,
-     pp. 348–370.
+- [[Lei10](https://link.springer.com/content/pdf/10.1007%2F978-3-642-17511-4_20.pdf)]
+  Rustan Leino.
+  _“Dafny: An Automatic Program Verifier for Functional Correctness”._
+  In: _16th International Conference, LPAR-16, Dakar, Senegal_.
+  Springer Berlin Heidelberg,
+  Apr. 2010,
+    pp. 348–370.
 
-- [Wan+17] Yuxin Wang, Zeyu Ding, Guanhong Wang, Daniel Kifer, and Danfeng Zhang.
-           _“lightdp”_.
-           URL: [github.com/yxwangcs/lightdp](https://github.com/yxwangcs/lightdp) .
-           2017
+- [[Wan+17](https://github.com/yxwangcs/lightdp)]
+  Yuxin Wang, Zeyu Ding, Guanhong Wang, Danfeng Zhang, and Daniel Kifer.
+  _“github.com/yxwangcs/lightdp”_.
+  2017
 
-- [Wan+19] Yuxin Wang, Zeyu Ding, Guanhong Wang, Daniel Kifer, and Danfeng Zhang.
-           _“Proving Differential Privacy with Shadow Execution”_.
-           In: _Proceedings of the 40th ACM SIGPLAN Conference on Programming Language Design and Implementation_.
-           PLDI 2019. Phoenix, AZ,
-           USA: ACM, 2019,
-           pp. 655 - 669
+- [[Wan+19](https://dl.acm.org/doi/pdf/10.1145/3314221.3314619)]
+  Yuxin Wang, Zeyu Ding, Guanhong Wang, Daniel Kifer, and Danfeng Zhang.
+  _“Proving Differential Privacy with Shadow Execution”_.
+  In: _Proceedings of the 40th ACM SIGPLAN Conference on Programming Language Design and Implementation_.
+  PLDI 2019. Phoenix, AZ,
+  USA: ACM, 2019,
+  pp. 655 - 669
 
-- [ZK17] Danfeng Zhang and Daniel Kifer.
-         _“LightDP: towards automating differential privacy proofs”_.
-         In: _Proceedings of the 44th ACM SIGPLAN Symposium on Principles of Programming Languages._
-         POPL 2017.
-         ACM Press, 2017.
+- [[ZK17](https://dl.acm.org/doi/pdf/10.1145/3009837.3009884)]
+  Danfeng Zhang and Daniel Kifer.
+  _“LightDP: towards automating differential privacy proofs”_.
+  In: _Proceedings of the 44th ACM SIGPLAN Symposium on Principles of Programming Languages._
+  POPL 2017.
+  ACM Press, 2017.
 
 
