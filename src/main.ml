@@ -13,9 +13,6 @@ let remove_extension filename =
     ""
     (String.split_on_char '.' filename)
 
-let add_missing_extension given_filename bare_filename =
-  if given_filename = bare_filename then bare_filename^".mldp" else given_filename
-
 let string_from_file filename : string option =
   let lines = ref ""
   in let channel = open_in filename
@@ -46,7 +43,7 @@ let () =
   else let given_file = Sys.argv.(1)
     in let bare_file = remove_extension given_file
     in let output_file = bare_file^".dfy"
-    in let input_stream = open_in (add_missing_extension given_file bare_file)
+    in let input_stream = open_in given_file
     in let lexbuf = Lexing.from_channel input_stream
     in let typed_ast = lexbuf
                        (* Parsing *)
