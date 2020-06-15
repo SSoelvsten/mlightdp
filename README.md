@@ -44,35 +44,43 @@ Versions 2.0 and higher of Dafny may be enough.
 
 ## Usage
 By merely writing `make` one should be able to freshly compile the source code
-and run the compiled tool on all the examples present in _examples/_.
+and run the compiled tool on all the examples present in _examples/_. The list
+of relevant `make` targets are provided in the table below.
+
+| Target               | Effect                                                                          |
+|----------------------|---------------------------------------------------------------------------------|
+| `compile O=<output>` | Compile the _MLightDP_ tool and bash script. Default output _O_ is _mlightdp.o_ |
+| `clean`              | Remove all compilation output from `make compile`                               |
+| `examples`           | Transform all provided examples with the _MLightDP_ tool                        |
+| `clean-examples`     | Remove all compiled examples of the _MLightDP_ tool from `make examples`        |
+| `test`               | Run all unit tests                                                              |
 
 **Compilation and usage**
 
-For more fine-grained control than the target above is provided in the following
-targets.
+The tool can be compiled with `make compile`, which generates a bash script
+`mlightdp` to run it. Adding the repository root to your path should allow one
+to use the tool globally.
 
-| Target              | Effect                                                                        |
-|---------------------|-------------------------------------------------------------------------------|
-| `compile`           | Compile the MLightDP tool with OCaml                                          |
-| `clean`             | Remove all compilation from OCaml                                             |
-| `run I=<filename>`  | Run the MLightDP tool on _<filename>_ (default: _examples/sparsevector.mldp_) |
-| `examples`          | The same as `run`, but for all examples simultaneously                        |
-| `clean-examples`    | Remove all compiled examples of the MLightDP tool                             |
+To run the tool on some file write
+
+```bash
+./mlightdp path/to/file.mldp
+```
 
 **Unit Tests**
 
-All tests can be compiled and run with `make test`. More precisely one can choose
-to only run some of the unit tests with the following targets.
+All tests can be compiled and run with `make test`. More precisely one can
+choose to only run some of the unit tests with the following targets.
 
-| Target             | Tests                                        |
-|--------------------|----------------------------------------------|
-| `make test-parser` | Run unit tests for AST creation from strings |
-| `make test-menhir` | Get Menhir output for shift-reduce conflicts |
-| `make test-semant` | Test semantic analysis step                  |
+| Target        | Test                                         |
+|---------------|----------------------------------------------|
+| `test-parser` | Run unit tests for AST creation from strings |
+| `test-menhir` | Get Menhir output for shift-reduce conflicts |
+| `test-semant` | Test semantic analysis step                  |
 
-As one can see, we do yet not cover the _refinement_ or the _differential
-privacy type checking_ steps in the unit testing. Currently these are only
-tested by the examples.
+As one can see in the table above, we do yet not cover the _refinement_ or the
+_differential privacy type checking_ steps in the unit testing. Currently these
+are only tested in the end-to-end tests.
 
 ## Examples
 In _examples/_ one can find multiple examples that all compile with our tool.
@@ -98,6 +106,9 @@ by Dafny.
 
 - [ ] `smart_sum.mldp`: A more complicated summation algorithm also from
       [[ZK17](#references)].
+
+After compiling the tool with `make compile`, then all examples can be processed
+with `make examples` and again removed with `clean-examples`.
 
 ## References
 
