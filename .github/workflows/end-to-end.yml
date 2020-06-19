@@ -65,8 +65,8 @@ jobs:
         with:
           name: dafny
 
-      - name: verify 'helloise'
-        run: dafny/dafny /compile 0 compiled_examples/helloise.dfy
+      - name: verify 'laplace_mechanism'
+        run: dafny/dafny /compile 0 compiled_examples/laplace_mechanism.dfy
 
       - name: verify 'sparse_vector'
         run: dafny/dafny /compile 0 compiled_examples/sparse_vector.dfy

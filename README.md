@@ -87,8 +87,8 @@ In _examples/_ one can find multiple examples that all compile with our tool.
 We mark in the list below the examples where the transformed output is verified
 by Dafny.
 
-- [X] `helloise.mldp`: The simplest possible program based on the presentation
-      of _randomness alignment_ in [[Wan+19](#references)].
+- [X] `laplace_mechanism.mldp`: The simplest possible program based on the
+      presentation of _randomness alignment_ in [[Wan+19](#references)].
 
 - [X] `sparse_vector.mldp`: The running example in [[ZK17](#references)], that
       outputs boolean values detailing the relation between the query results

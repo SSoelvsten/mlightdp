@@ -25,8 +25,8 @@ compile: | clean
 examples:
 	@echo "Compile Example: Gap Sparse Vector"
 	@./mlightdp examples/gap_sparse_vector.mldp
-	@echo "Compile Example: Helloise"
-	@./mlightdp examples/helloise.mldp
+	@echo "Compile Example: Laplace Mechanism"
+	@./mlightdp examples/laplace_mechanism.mldp
 	@echo "Compile Example: Numerical Sparse Vector"
 	@./mlightdp examples/numerical_sparse_vector.mldp
 	@echo "Compile Example: Partial Sum"
