@@ -1,8 +1,8 @@
 # MLightDP
 [![MIT License](https://img.shields.io/badge/license-MIT%20License-blue.svg)](LICENSE.md)
-![build](https://github.com/SSoelvsten/mlightdp/workflows/build/badge.svg?branch=master)
-![unit tests](https://github.com/SSoelvsten/mlightdp/workflows/unit%20tests/badge.svg?branch=master)
-![end-to-end tests](https://github.com/SSoelvsten/mlightdp/workflows/end-to-end%20tests/badge.svg?branch=master)
+![build](https://github.com/SSoelvsten/mlightdp/workflows/build/badge.svg?branch=main)
+![unit tests](https://github.com/SSoelvsten/mlightdp/workflows/unit%20tests/badge.svg?branch=main)
+![end-to-end tests](https://github.com/SSoelvsten/mlightdp/workflows/end-to-end%20tests/badge.svg?branch=main)
 
 Zhang and Kifer [[ZK17](#references)] designed the language LightDP in which
 they track the distance of a variable, i.e. how different its values are during
