@@ -16,14 +16,8 @@ jobs:
     - name: git checkout
       uses: actions/checkout@v2
 
-    - name: apt install opam
-      run: sudo apt install opam
-
-    - name: opam init
-      run: opam init && eval $(opam config env)
-
-    - name: opam install ocamlbuild menhir
-      run: opam install ocamlbuild menhir
+    - name: Setup OPAM
+      run: sudo apt install opam && opam init && opam install ocamlbuild ocamlfind menhir ounit --yes
 
     - name: make compile
       run: eval $(opam config env) && make compile
